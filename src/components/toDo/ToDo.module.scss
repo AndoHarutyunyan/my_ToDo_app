@@ -1,0 +1,22 @@
+@import "./../../mainStyle/variables.scss";
+
+.wr_ToDo {
+  width: 600px;
+  text-align: center;
+  background: $toDoBg;
+  border: 1px solid $borderCl;
+  border-radius: $radius_10;
+  padding: 20px 55px 85px;
+  @media  (max-width:680px){
+    width:100%;
+    padding: 15px 20px 45px;
+  }
+  h1 {
+    margin: 0;
+    font-size: $fs_40;
+  }
+}
+.line{
+  display: block;
+  border: 1px solid $lineCl;
+}

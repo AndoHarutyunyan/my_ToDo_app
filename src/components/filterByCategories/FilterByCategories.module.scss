@@ -1,0 +1,16 @@
+@import "./../../mainStyle/variables.scss";
+
+.wr_FilterByCategories{
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    div{
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        input{
+            margin-right: 15px;
+        }
+    }
+}
