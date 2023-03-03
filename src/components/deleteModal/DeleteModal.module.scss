@@ -1,0 +1,41 @@
+@import "./../../mainStyle/variables.scss";
+
+.wr_DeleteModal {
+  width: $modalWidth;
+  background: $toDoBg;
+  border-radius: $radius_5;
+  padding: 15px;
+}
+.wr_title_close {
+  margin-bottom: 15px;
+}
+.close {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius_5;
+  &:hover {
+    background: $btnHoverBg;
+  }
+}
+.wr_btn {
+  margin-top: 15px;
+  button {
+    cursor: pointer;
+    width: 120px;
+    color: white;
+    font-weight: 600;
+    height: 30px;
+    background: $btnBg;
+    border-radius: $radius_5;
+    &:hover {
+      background: $btnHoverBg;
+    }
+  }
+  :nth-child(2) {
+    background: #c40303;
+    &:hover {
+      background: red;
+    }
+  }
+}

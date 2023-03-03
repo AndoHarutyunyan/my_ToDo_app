@@ -1,0 +1,32 @@
+@import "./../../mainStyle/variables.scss";
+
+.wr_toDoItem {
+  margin-top: 15px;
+  width: 100%;
+  border-radius: $radius_5;
+  border: 1px solid $borderCl;
+  height: 55px;
+  background: $itemBg;
+  padding: 10px;
+  input {
+    width: 18px;
+    height: 18px;
+  }
+  p {
+    width: calc(100% - 100px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  button {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: $radius_5;
+    background: $btnBg;
+    &:hover{
+      background: $btnHoverBg;
+    }
+   }
+}

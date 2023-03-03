@@ -1,0 +1,51 @@
+@import "./../../mainStyle/variables.scss";
+
+.wr_EditModal {
+  width: $modalWidth;
+  background: $toDoBg;
+  border-radius: $radius_5;
+  padding: 15px;
+}
+.wr_input {
+  height: 32px;
+  input {
+    height: 100%;
+    width: 100%;
+    border-radius: $radius_5;
+    padding: 0 15px;
+    background: $itemBg;
+  }
+}
+.wr_title_close {
+  margin-bottom: 15px;
+}
+.close {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius_5;
+  &:hover {
+    background: $btnHoverBg;
+  }
+}
+.wr_btn {
+  margin-top: 15px;
+  button {
+    cursor: pointer;
+    width: 120px;
+    color: white;
+    font-weight: 600;
+    height: 30px;
+    background: $btnBg;
+    border-radius: $radius_5;
+    &:hover {
+      background: $btnHoverBg;
+    }
+  }
+  :nth-child(2) {
+    background: #02028d;
+    &:hover {
+      background: blue;
+    }
+  }
+}

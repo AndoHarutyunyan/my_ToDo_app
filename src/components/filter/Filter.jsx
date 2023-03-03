@@ -1,11 +1,11 @@
-import styles from "./FilterByCategories.module.scss";
+import styles from "./Filter.module.scss";
 
-export default function filterByCategories(props) {
+export default function Filter(props) {
   return (
-    <div className={styles.wr_FilterByCategories}>
+    <div className={[styles.wr_FilterByCategories, 'flex_between'].join(' ')}>
       <div>
         <input type="radio" id="all" name="drone" value="all" />
-        <label for="all">ALL</label>
+        <label htmlFor="all">ALL</label>
       </div>
       <div>
         <input
@@ -13,18 +13,18 @@ export default function filterByCategories(props) {
           id="important"
           name="drone"
           value="important"
-          checked
+          defaultChecked
         />
-        <label for="important">Important</label>
+        <label htmlFor="important">Important</label>
       </div>
 
       <div>
         <input type="radio" id="checked" name="drone" value="checked" />
-        <label for="checked">Checked</label>
+        <label htmlFor="checked">Checked</label>
       </div>
       <div>
         <input type="radio" id="remember" name="drone" value="remember" />
-        <label for="remember">Remember</label>
+        <label htmlFor="remember">Remember</label>
       </div>
     </div>
   );

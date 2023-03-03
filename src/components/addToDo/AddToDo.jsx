@@ -1,9 +1,31 @@
 import styles from "./AddToDo.module.scss";
-export default function addToDo(props) {
+import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { addToDo } from "../../store/slices/toDoSlice";
+export default function AddToDo(props) {
+  const [inputValue, setInputValue] = useState("");
+  const dispatch = useDispatch();
+
+  function addToDoList() {
+    if (inputValue) {
+      dispatch(addToDo({ id: uuidv4(), name: inputValue, checked: false }));
+      setInputValue("");
+    }
+  }
+
   return (
-    <div className={styles.wr_add_ToDo}>
-      <input type="text" placeholder="some words" />
-      <button >
+    <div className={[styles.wr_add_ToDo, "flex_center"].join(" ")}>
+      <input
+        className="br_outline_none"
+        type="text"
+        placeholder="some words"
+        value={inputValue}
+        onChange={(e) => {
+          setInputValue(e.target.value);
+        }}
+      />
+      <button className="flex_center br_outline_none" onClick={addToDoList}>
         <svg
           width="15"
           height="15"
