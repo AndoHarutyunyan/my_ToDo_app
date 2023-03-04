@@ -1,12 +1,13 @@
 @import "./../../mainStyle/variables.scss";
 
 .wr_ToDo {
+  margin-top: 15px;
   width: 600px;
   text-align: center;
   background: $toDoBg;
   border: 1px solid $borderCl;
   border-radius: $radius_10;
-  padding: 20px 55px 85px;
+  padding: 20px 55px 25px;
   @media  (max-width:680px){
     width:100%;
     padding: 15px 20px 45px;
@@ -19,4 +20,5 @@
 .line{
   display: block;
   border: 1px solid $lineCl;
+  margin: 10px 0;
 }

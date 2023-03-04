@@ -1,4 +1,23 @@
 @import "./../../mainStyle/variables.scss";
 
-
-.wr_ToDolist{}
+.wr_toDo_List {
+  margin-top: 15px;
+}
+.wr_btn {
+  button {
+    cursor: pointer;
+    width: 100%;
+    height: 30px;
+    background: $btnBg;
+    border-radius: $radius_5;
+    &:hover {
+      background: $btnHoverBg;
+    }
+    svg {
+      transition: all 0.3s;
+    }
+  }
+}
+.arrow {
+  transform: rotate(180deg);
+}

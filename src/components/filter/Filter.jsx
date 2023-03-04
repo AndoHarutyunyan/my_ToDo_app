@@ -1,31 +1,28 @@
-import styles from "./Filter.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { changeFilterValue } from "../../store/slices/toDoSlice";
+import Select from "react-select";
 
-export default function Filter(props) {
+const options = [
+  { value: "All", label: "All" },
+  { value: "Important", label: "Important" },
+  { value: "Checked", label: "Checked" },
+  { value: "Remember", label: "Remember" },
+];
+
+export default function Filter() {
+  const filterValue = useSelector((stete) => stete.filterValue);
+  const dispatch = useDispatch();
+
   return (
-    <div className={[styles.wr_FilterByCategories, 'flex_between'].join(' ')}>
-      <div>
-        <input type="radio" id="all" name="drone" value="all" />
-        <label htmlFor="all">ALL</label>
-      </div>
-      <div>
-        <input
-          type="radio"
-          id="important"
-          name="drone"
-          value="important"
-          defaultChecked
-        />
-        <label htmlFor="important">Important</label>
-      </div>
-
-      <div>
-        <input type="radio" id="checked" name="drone" value="checked" />
-        <label htmlFor="checked">Checked</label>
-      </div>
-      <div>
-        <input type="radio" id="remember" name="drone" value="remember" />
-        <label htmlFor="remember">Remember</label>
-      </div>
+    <div>
+      <Select
+        defaultValue={filterValue}
+        onChange={(e) => {
+          dispatch(changeFilterValue(e));
+          // console.log(filterValue);
+        }}
+        options={options}
+      />
     </div>
   );
 }

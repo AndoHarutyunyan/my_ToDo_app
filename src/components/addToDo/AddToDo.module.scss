@@ -24,3 +24,14 @@
     }
   }
 }
+.wr_r_btn{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  div{
+    margin-right: 20px;
+    input{
+      margin-right: 5px;
+    }
+  }
+}

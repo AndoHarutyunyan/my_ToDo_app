@@ -1,0 +1,15 @@
+@import "./../../mainStyle/variables.scss";
+
+.wr_search {
+  height: 32px;
+  border: 1px solid $borderCl;
+  border-radius: $radius_5;
+  margin: 10px 0;
+  input {
+    height: 100%;
+    width: 100%;
+    border-radius: $radius_5;
+    padding: 0 15px;
+    background: $itemBg;
+  }
+}
