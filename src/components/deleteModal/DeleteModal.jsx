@@ -1,11 +1,12 @@
+import ModalWrapper from "../ui/ModalWrapper";
 import styles from "./DeleteModal.module.scss";
 
 export default function DeleteModal({ name, deleteToDo, closeModal }) {
   return (
-    <div className="main_bg_modals">
+    <ModalWrapper close={closeModal}>
       <div className={styles.wr_DeleteModal}>
         <div className={[styles.wr_title_close, "flex_between"].join(" ")}>
-          <h2>Delet</h2>
+          <h2>Delete</h2>
           <button
             className={[styles.close, "br_outline_none", "flex_center"].join(
               " "
@@ -32,6 +33,6 @@ export default function DeleteModal({ name, deleteToDo, closeModal }) {
           </button>
         </div>
       </div>
-    </div>
+    </ModalWrapper>
   );
 }

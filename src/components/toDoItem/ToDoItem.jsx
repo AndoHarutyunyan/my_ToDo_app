@@ -7,9 +7,9 @@ import {
   editToDoName,
   changeCheck,
 } from "../../store/slices/toDoSlice";
-import { useState } from "react";
+import { useState, memo } from "react";
 
-export default function ToDoItem({ toDoItemData }) {
+const ToDoItem = memo(({ toDoItemData }) => {
   const [seeDeletModal, setSeeDeletModal] = useState(false);
   const [seeEditModal, setSeeEditModal] = useState(false);
   const dispatch = useDispatch();
@@ -84,4 +84,7 @@ export default function ToDoItem({ toDoItemData }) {
       ) : null}
     </>
   );
-}
+})
+
+
+export default ToDoItem;

@@ -1,11 +1,11 @@
 import { useState } from "react";
+import ModalWrapper from "../ui/ModalWrapper";
 import styles from "./EditModal.module.scss";
-
 
 export default function EditModal({ closeModal, edit, name }) {
   const [inputValue, setInputValue] = useState(name);
   return (
-    <div className="main_bg_modals">
+    <ModalWrapper close={closeModal}>
       <div className={styles.wr_EditModal}>
         <div className={[styles.wr_title_close, "flex_between"].join(" ")}>
           <h2>Edit</h2>
@@ -38,11 +38,11 @@ export default function EditModal({ closeModal, edit, name }) {
           <button className="br_outline_none" onClick={closeModal}>
             CANCEL
           </button>
-          <button className="br_outline_none" onClick={()=>edit(inputValue)}>
+          <button className="br_outline_none" onClick={() => edit(inputValue)}>
             EDIT
           </button>
         </div>
       </div>
-    </div>
+    </ModalWrapper>
   );
 }

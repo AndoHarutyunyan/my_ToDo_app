@@ -2,6 +2,8 @@
 
 .wr_toDo_List {
   margin-top: 15px;
+  max-height: 310px;
+  overflow-y: auto;
 }
 .wr_btn {
   button {

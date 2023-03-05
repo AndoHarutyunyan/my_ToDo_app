@@ -19,7 +19,6 @@ export default function Filter() {
         defaultValue={filterValue}
         onChange={(e) => {
           dispatch(changeFilterValue(e));
-          // console.log(filterValue);
         }}
         options={options}
       />

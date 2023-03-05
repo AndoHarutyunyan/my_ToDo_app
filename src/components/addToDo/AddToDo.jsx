@@ -3,7 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { addToDo } from "../../store/slices/toDoSlice";
-export default function AddToDo(props) {
+
+export default function AddToDo() {
   const [inputValue, setInputValue] = useState("");
   const [important, setImportant] = useState(false);
   const dispatch = useDispatch();
@@ -20,6 +21,13 @@ export default function AddToDo(props) {
         })
       );
       setInputValue("");
+      setImportant(false);
+    }
+  }
+
+  function handleEnterKeyPress(e) {
+    if (e.key === "Enter") {
+      addToDoList();
     }
   }
 
@@ -34,6 +42,7 @@ export default function AddToDo(props) {
           onChange={(e) => {
             setInputValue(e.target.value);
           }}
+          onKeyDown={handleEnterKeyPress}
         />
         <button className="flex_center br_outline_none" onClick={addToDoList}>
           <svg
@@ -66,7 +75,6 @@ export default function AddToDo(props) {
           <input
             type="radio"
             id="default"
-            name="drone"
             value="default"
             checked={!important}
             onChange={() => {
@@ -79,7 +87,6 @@ export default function AddToDo(props) {
           <input
             type="radio"
             id="important"
-            name="drone"
             value="important"
             checked={important}
             onChange={() => {

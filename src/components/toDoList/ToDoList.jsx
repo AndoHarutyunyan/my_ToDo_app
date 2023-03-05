@@ -1,10 +1,12 @@
 import styles from "./ToDoList.module.scss";
 import ToDoItem from "./../toDoItem/ToDoItem";
 import Pagination from "./../pagination/Pagination";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useMemo, useState } from "react";
+import { sortTodoList } from "../../store/slices/toDoSlice";
 
-export default function ToDoList(props) {
+export default function ToDoList() {
+  const dispatch = useDispatch();
   const toDoList = useSelector((state) => state.toDoList);
   const searchValue = useSelector((state) => state.searchValue);
   const filterValue = useSelector((stete) => stete.filterValue);
@@ -13,38 +15,35 @@ export default function ToDoList(props) {
   const [itemsCount, setItemsCount] = useState([0, 20]);
 
   const list = useMemo(() => {
-    let sortedList = [...toDoList];
-    if (upDown) {
-      sortedList.sort((a, b) => {
-        return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
-      });
-    } else {
-      sortedList.sort((a, b) => {
-        return a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1;
-      });
-    }
+    let filteredList = [...toDoList];
+
     if (searchValue) {
-      sortedList = sortedList.filter((el) =>
+      filteredList = filteredList.filter((el) =>
         el.name.toLowerCase().includes(searchValue.toLowerCase())
       );
+      setItemsCount([0, 20]);
     }
-    sortedList = sortedList.filter((el) => {
+
+    filteredList = filteredList.filter((el) => {
       if (
         filterValue.value === "Important" ||
         filterValue.value === "Checked" ||
         filterValue.value === "Remember"
       ) {
+        setItemsCount([0, 20]);
         return el[filterValue.value.toLowerCase()];
       } else {
         return el;
       }
     });
-    return sortedList;
-  }, [upDown, toDoList, searchValue, filterValue]);
+    return filteredList;
+  }, [toDoList, searchValue, filterValue]);
 
   function changeUpDown() {
-    setUpDown(!upDown);
+    dispatch(sortTodoList(!upDown));
+    setUpDown((prev) => !prev);
   }
+
   return (
     <>
       <div className={styles.wr_btn}>
@@ -66,13 +65,15 @@ export default function ToDoList(props) {
           ? list
               .slice(itemsCount[0], itemsCount[1])
               .map((el) => <ToDoItem toDoItemData={el} key={el.id} />)
-          : "nathing yet"}
+          : "Nothing yet"}
       </div>
-      <Pagination
-        itemsPerPage={20}
-        items={list}
-        changeItemsCount={setItemsCount}
-      />
+      {list.length > 20 ? (
+        <Pagination
+          itemsPerPage={20}
+          items={list}
+          changeItemsCount={setItemsCount}
+        />
+      ) : null}
     </>
   );
 }
