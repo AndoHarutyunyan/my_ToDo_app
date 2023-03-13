@@ -2,8 +2,8 @@ import styles from "./ToDoList.module.scss";
 import ToDoItem from "./../toDoItem/ToDoItem";
 import Pagination from "./../pagination/Pagination";
 import { useSelector, useDispatch } from "react-redux";
-import { useMemo, useState } from "react";
-import { sortTodoList } from "../../store/slices/toDoSlice";
+import { useEffect, useMemo, useState } from "react";
+import { sortTodoList, getToDoList } from "../../store/slices/toDoSlice";
 
 export default function ToDoList() {
   const dispatch = useDispatch();
@@ -13,6 +13,10 @@ export default function ToDoList() {
 
   const [upDown, setUpDown] = useState(false);
   const [itemsCount, setItemsCount] = useState([0, 20]);
+
+  useEffect(() => {
+    dispatch(getToDoList());
+  }, [dispatch]);
 
   const list = useMemo(() => {
     let filteredList = [...toDoList];

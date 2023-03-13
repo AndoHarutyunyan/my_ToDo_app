@@ -2,7 +2,7 @@ import styles from "./AddToDo.module.scss";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { addToDo } from "../../store/slices/toDoSlice";
+import { createToDo } from "../../store/slices/toDoSlice";
 
 export default function AddToDo() {
   const [inputValue, setInputValue] = useState("");
@@ -11,15 +11,14 @@ export default function AddToDo() {
 
   function addToDoList() {
     if (inputValue) {
-      dispatch(
-        addToDo({
-          id: uuidv4(),
-          name: inputValue,
-          checked: false,
-          important,
-          remember: false,
-        })
-      );
+      const todoItem = {
+        id: uuidv4(),
+        name: inputValue,
+        checked: false,
+        important,
+        remember: false,
+      };
+      dispatch(createToDo(todoItem));
       setInputValue("");
       setImportant(false);
     }

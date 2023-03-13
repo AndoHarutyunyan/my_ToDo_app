@@ -2,11 +2,7 @@ import styles from "./ToDoItem.module.scss";
 import DeleteModal from "../deleteModal/DeleteModal";
 import EditModal from "../editModal/EditModal";
 import { useDispatch } from "react-redux";
-import {
-  deleteToDo,
-  editToDoName,
-  changeCheck,
-} from "../../store/slices/toDoSlice";
+import { editToDoItem, deleteToDoItem } from "../../store/slices/toDoSlice";
 import { useState, memo } from "react";
 
 const ToDoItem = memo(({ toDoItemData }) => {
@@ -21,7 +17,9 @@ const ToDoItem = memo(({ toDoItemData }) => {
           type="checkbox"
           defaultChecked={toDoItemData.checked}
           onChange={() => {
-            dispatch(changeCheck(toDoItemData.id));
+            dispatch(
+              editToDoItem({ ...toDoItemData, checked: !toDoItemData.checked })
+            );
           }}
         />
         <p>{toDoItemData.name}</p>
@@ -70,7 +68,7 @@ const ToDoItem = memo(({ toDoItemData }) => {
           name={toDoItemData.name}
           closeModal={() => setSeeEditModal(false)}
           edit={(toDoName) => {
-            dispatch(editToDoName({ id: toDoItemData.id, name: toDoName }));
+            dispatch(editToDoItem({ ...toDoItemData, name: toDoName }));
             setSeeEditModal(false);
           }}
         />
@@ -79,12 +77,11 @@ const ToDoItem = memo(({ toDoItemData }) => {
         <DeleteModal
           name={toDoItemData.name}
           closeModal={() => setSeeDeletModal(false)}
-          deleteToDo={() => dispatch(deleteToDo(toDoItemData.id))}
+          deleteToDo={() => dispatch(deleteToDoItem(toDoItemData.id))}
         />
       ) : null}
     </>
   );
-})
-
+});
 
 export default ToDoItem;
